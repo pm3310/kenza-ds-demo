@@ -1,0 +1,8 @@
+sagify:
+    
+    train:
+      input_s3_dir: s3://kenza-ds-demo/iris-data/iris.csv
+      output_s3_dir: s3://kenza-training-models
+      ec2_type: ml.m5.large
+      volume_size: 50
+      timeout: 86400
