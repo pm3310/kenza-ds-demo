@@ -8,3 +8,8 @@ sagify:
       volume_size: 50
       timeout: 86400
       metrics: Accuracy
+
+      deploy:
+        instances_count: 1
+        ec2_type: ml.t2.medium
+        endpoint: some-endpoint
