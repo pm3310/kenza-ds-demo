@@ -15,7 +15,8 @@ class ModelService(object):
             # TODO Examples:
             # TODO 1. keras.models.load_model(os.path.join(_MODEL_PATH, '<model_file>'))
             # TODO 2. joblib.load('<model_file>')
-            cls.model = None
+            from sklearn.externals import joblib
+            cls.model = joblib.load(os.path.join(_MODEL_PATH, 'model.pkl'))
         return cls.model
 
     @classmethod
@@ -32,15 +33,9 @@ def predict(json_input):
     :return: [dict], prediction
     """
 
-    # TODO Transform json_input and assign the transformed value to model_input
-    model_input = None
+    model_input = json_input['features']
     prediction = ModelService.predict(model_input)
-    print(prediction)
 
-    # TODO If you have more than 1 models, then create more classes similar to ModelService
-    # TODO where each of one will load one of your models
-
-    # TODO Transform prediction to a dict and assign it to result
-    result = {}
-
-    return result
+    return {
+        "prediction": prediction.item()
+    }
