@@ -3,7 +3,7 @@ import json
 import pandas as pd
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
 
 
 def train(input_file_path, hyperparams_path):
@@ -25,11 +25,7 @@ def train(input_file_path, hyperparams_path):
     features_test = df_test[['feature1', 'feature2', 'feature3', 'feature4']].values
     labels_test = df_test[['label']].values.ravel()
 
-    clf = SVC(
-        gamma=float(hyperparams_dict['gamma']),
-        C=float(hyperparams_dict['C']),
-        kernel=hyperparams_dict['kernel']
-    )
+    clf = RandomForestClassifier()
     clf.fit(features_train, labels_train)
 
     test_predictions = clf.predict(features_test)
