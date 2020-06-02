@@ -37,5 +37,6 @@ def predict(json_input):
     prediction = ModelService.predict(model_input)
 
     return {
-        "prediction": prediction.item()
+        "prediction": prediction.item(),
+        "model": type(ModelService.model)
     }
